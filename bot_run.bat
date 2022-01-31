@@ -1,6 +1,6 @@
 @echo off
 
-call %~dp0D:\BOT\S-elephant_bot_python\venv\Scripts\activate
+call D:\BOT\S-elephant_bot_python\venv\Scripts\activate
 
 cd D:\BOT\S-elephant_bot_python
 

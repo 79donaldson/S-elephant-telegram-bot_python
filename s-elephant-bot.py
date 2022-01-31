@@ -1,21 +1,12 @@
-from aiogram import Bot, types
-from aiogram.dispatcher import dispatcher
-from aiogram.utils import executer
+from aiogram.utils import executor
+from create_bot import dp
 
-import os, json, string
+async def on_startup(_):
+    print('Бот в онлайне')
 
+from handlers import client, admin, other
 
+client.register_handlers_client(dp)
+other.register_handlers_other(dp)
 
-bot = Bot(token=os.getenv('TOKEN'))  
-dp = dispatcher(bot)
-
-@dp.message_handler()
-async def echo_send(message : types.Message):
-    await message.aswer(message.text)
-    await message.reply(message.text)
-    await bot.send.message(message.from_user.id, message.text)
-
-
-
-
-executor.start_polling(dp, skip_updates=True)
+executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
