@@ -1,10 +1,13 @@
 from aiogram import Dispatcher, types
 from create_bot import dp, bot
+from  keybords import kb_client
+
+
 import json, string
 
 #@dp.message_handler(commands=['start', 'help'])
-async def command_start(message : types.Message):
-    await bot.send_message(message.from_user.id, 'Приятного отдыха')
+async def command_start(message : types.Message):  
+      await bot.send_message(message.from_user.id, 'Приятного отдыха', reply_markup=kb_client)
 
 #@dp.message_handler(commands=['График'])
 async def command_grafik(message : types.Message):
